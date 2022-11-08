@@ -11,10 +11,11 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import todoReducer from './userReducer';
+
+import userReducer from "./userReducer";
 
 const rootReducer = combineReducers({
-    reducer: todoReducer,
+    reducer: userReducer,
 });
 
 const persistConfig = {
@@ -33,6 +34,7 @@ const store = configureStore({
             },
         }),
 })
+export type RootReducer =ReturnType<typeof store.getState>
 
 export const persistor = persistStore(store);
 export default store;
