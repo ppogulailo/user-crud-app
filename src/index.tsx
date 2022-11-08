@@ -3,14 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { BrowserRouter } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
+import Provider from 'react-redux/es/components/Provider';
+import store, {persistor} from "./redux/store";
+import { CircularProgress } from '@mui/material'
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <BrowserRouter>
+          <React.StrictMode>
+              <Provider store={store}>
+                  <PersistGate loading={<CircularProgress />} persistor={persistor}>
+            <App />
+                  </PersistGate>
+                  </Provider>
+          </React.StrictMode>
+        </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
