@@ -11,11 +11,12 @@ import {
     Modal,
     Box,
     Input,
+    TextField,
 } from "@mui/material";
 import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useTypeSelector} from "../hooks/useTypeSelector";
-import {addItem, fetchItem, removeTodo, updateItem} from "../redux/store/userReducer";
+import {addItem, fetchItem, removeTodo, searchItem, updateItem} from "../redux/store/userReducer";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import { User } from "../type/types";
@@ -78,6 +79,7 @@ const UserComponent = () => {
             if (data) {
                 dispatch(removeTodo(id))
             }
+
         } catch (e) {
             throw e
         }
@@ -100,12 +102,18 @@ const UserComponent = () => {
             throw e
         }
     }
+    const [set,setSet] = useState('')
+    const search=()=>{
+        console.log(set)
+        dispatch(searchItem(set))
+    }
 
 
     return (
         <TableContainer component={Paper}  sx={style.table}>
             {/*<IconButton onClick={handleOpen}><CreateOutlinedIcon/></IconButton>*/}
-
+            <TextField id="standard-basic" label="Standard" variant="standard" onChange={(e:any)=>setSet(e.target.value)}/>
+            <Button onClick={search}>Search</Button>
             <Table stickyHeader >
                 <TableHead>
                     <TableRow>
@@ -117,7 +125,19 @@ const UserComponent = () => {
                 </TableHead>
                 <TableBody>
                     {
-                        items.map((row: User) => (
+                        items.filter((obj:User)=>{
+                            if(obj.name.toLowerCase().includes(set.toLowerCase())){
+                                return true
+                            }
+                            else if(obj.username.toLowerCase().includes(set.toLowerCase())){
+                                return true
+                            }
+                            else if(obj.id==set){
+                                return true
+                            }
+
+                            return false
+                        }).map((row: User) => (
                             <ModalUser key={row.id} row={row} deleteItem={deleteItem} setTitle={setTitle} setUserTitle={setUserTitle} updateUser={updateUser}/>
                         ))
                     }

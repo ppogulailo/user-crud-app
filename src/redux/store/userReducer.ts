@@ -27,9 +27,13 @@ const userSlice = createSlice({
                 existingUser.username = username;
             }
         },
+        searchItem(state,action){
+            console.log(action.payload)
+            state.item= state.item.filter((item:User)=> item.name.includes(action.payload) )
+        }
     },
 });
 
-export const {fetchItem,addItem,removeTodo,updateItem} = userSlice.actions;
+export const {fetchItem,addItem,removeTodo,updateItem,searchItem} = userSlice.actions;
 
 export default userSlice.reducer;
