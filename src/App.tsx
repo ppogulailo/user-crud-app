@@ -3,10 +3,14 @@ import HelloComponent from "./components/helloComponent";
 import UserComponent from "./components/userComponent";
 
 function App() {
+
+
+
   return (
       <Routes>
          <Route path='/' element={<HelloComponent/>}></Route>
           <Route path='/usercomponent' element={<UserComponent/>}></Route>
+          <Route path='/usercomponent/:id' element={<UserComponent/>}></Route>
       </Routes>
   );
 }

@@ -31,3 +31,7 @@ export  interface ActionReducerAdd{
     payload:User
 }
 //
+export interface ISignInForm {
+    login: string;
+    password: string;
+}
