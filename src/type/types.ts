@@ -32,6 +32,6 @@ export  interface ActionReducerAdd{
 }
 //
 export interface ISignInForm {
-    login: string;
-    password: string;
+    name: string;
+    username: string;
 }

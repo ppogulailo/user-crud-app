@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {ActionReducerFetch, ActionReducerAdd, User} from "../../type/types";
+import {ActionReducerFetch, ActionReducerAdd, User} from "../../../type/types";
 
 
 const initialState:any={
-    item:[]
+    item: []
 }
 const userSlice = createSlice({
     name: 'item',

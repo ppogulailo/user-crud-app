@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 
-import userReducer from "./userReducer";
+import userReducer from "./users/userReducer";
 
 const rootReducer = combineReducers({
     reducer: userReducer,

@@ -1,10 +1,12 @@
-import {Box, Button, IconButton, Input, Modal, TableCell, TableRow, TextField} from "@mui/material";
+import {Box, Button, IconButton, Input,  TableCell, TableRow, TextField} from "@mui/material";
 import {useEffect, useState} from "react";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import {Controller, SubmitHandler, useForm, useFormState} from "react-hook-form";
-import { nameValidation, usernameValidation} from "./validation";
-import {Navigate, NavLink, useNavigate, useParams} from "react-router-dom"
+import {nameValidation, usernameValidation} from "./validation";
+import {useNavigate} from "react-router-dom";
+import ModalBlock from "./Modal";
+
 interface ISignInForm {
     name: string;
     username: string;
@@ -12,99 +14,42 @@ interface ISignInForm {
 
 
 function ModalUser({row, deleteItem, setUserTitle, setTitle, updateUser}: any) {
-    const {id} = useParams();
-    console.log(id)
-    const {handleSubmit, control} = useForm<ISignInForm>({
-        mode: 'onChange',
-    });
+    const navigate = useNavigate();
 
-
-    const {errors} = useFormState({
-        control
-    })
-    console.log(!errors)
-    const onSubmit: SubmitHandler<ISignInForm> = data => console.log(data);
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    const ariaLabel = {'aria-label': 'description'};
+    const handleOpen = (e:any) => {
+        e.stopPropagation()
+        setOpen(true)
+    };
+    const handleClose = (e:any) =>{
+        setOpen(false)
+    }
 
-    // @ts-ignore
+
+
     return (
-        <TableRow key={row.id} >
+
+        <TableRow
+            key={row.id}
+            onClick={(e) =>{ navigate(`/user/${row.id}`)}}
+            sx={{cursor: 'pointer'}}
+        >
             <TableCell align='center'>{row.id}</TableCell>
             <TableCell align='center'>{row.name}</TableCell>
             <TableCell align='center'>{row.username}</TableCell>
             <TableCell align='center'>
-                <IconButton onClick={handleOpen}><CreateOutlinedIcon/></IconButton>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Box sx={style.box}>
-                        <Box
-                            component="form"
-                            sx={{
-                                '& > :not(style)': {m: 1},
-                            }}
-                            autoComplete="off"
-                        >
-                            <Controller
-                                control={control}
-                                name="name"
-                                rules={nameValidation}
-                                render={({field}) => (
-                                    <TextField
-                                        label="Name"
-                                        onChange={(e) => {
-                                            field.onChange(e)
-                                            setTitle(e.target.value)
-                                        }
-                                        }
-                                        value={field.value}
-                                        fullWidth={true}
-                                        size="small"
-                                        margin="normal"
-                                        className="auth-form__input"
-                                        error={!!errors.name?.message}
-                                        helperText={errors?.name?.message}
-                                    />
-                                )}
-                            />
-                            <Controller
-                                control={control}
-                                name="username"
-                                rules={usernameValidation}
-                                render={({field}) => (
-                                    <TextField
-                                        label="UserName"
-                                        onChange={(e) => {
-                                            field.onChange(e)
-                                            setUserTitle(e.target.value)
-                                        }}
-                                        fullWidth={true}
-                                        size="small"
-                                        margin="normal"
-                                        className="auth-form__input"
-                                        error={!!errors?.username?.message}
-                                        helperText={errors?.username?.message}
-                                    />
-                                )}
-                            />
-                            <Button onClick={() => updateUser(row.id)}>Change User</Button>
-                        </Box>
-                    </Box>
-                </Modal>
+                <IconButton onClick={(e)=> handleOpen(e)}><CreateOutlinedIcon/></IconButton>
+                <ModalBlock open={open} setOpen={setOpen} id={row.id} updateUser={updateUser} setTitle={setTitle} setUserTitle={setUserTitle}/>
                 {/*<IconButton onClick={()=>updateUser(row.id)}><CreateOutlinedIcon/></IconButton>*/}
-                <IconButton onClick={() => deleteItem(row.id)}><DeleteOutlineOutlinedIcon/></IconButton>
+                <IconButton onClick={(e:any) => {
+                    e.stopPropagation()
+                    deleteItem(row.id)}}><DeleteOutlineOutlinedIcon/></IconButton>
             </TableCell>
         </TableRow>
     );
 }
 
-const style = {
+export const style = {
     box: {
         position: 'absolute' as 'absolute',
         top: '50%',

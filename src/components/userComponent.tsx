@@ -6,26 +6,35 @@ import {
     TableBody, TableRow,
     TableCell,
     Paper,
-    TextField,
 } from "@mui/material";
 import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useTypeSelector} from "../hooks/useTypeSelector";
-import {addItem, fetchItem, removeTodo, updateItem} from "../redux/store/userReducer";
+import {addItem, fetchItem, removeTodo, updateItem} from "../redux/store/users/userReducer";
 import { User} from "../type/types";
 import ModalUser from "./ModalUser";
+import SearchAppBar from "./searchAppBar";
 
 
+// @ts-ignore
+// export const Context =React.createContext()
 const UserComponent = () => {
     const dispatch = useDispatch()
     const items = useTypeSelector((state) => state.reducer.item);
+    const [open, setOpen] = useState(false);
+    const handleOpen = (e:any) => {
+        e.stopPropagation()
+        setOpen(true)
+    };
+    const handleClose = (e:any) =>{
+        setOpen(false)
+    }
+
+
     const [title, setTitle] = useState('');
     const [userTitle, setUserTitle] = useState('');
-    useEffect(() => {
-        if (!items[0]) {
-            fetchData()
-        }
-    }, [])
+    const [set, setSet] = useState('')
+
     const fetchData = async () => {
         const {data} = await axios.get('https://jsonplaceholder.typicode.com/users')
         await dispatch(fetchItem(data))
@@ -99,14 +108,16 @@ const UserComponent = () => {
             }
         }
     }
-    const [set, setSet] = useState('')
+
 
 
     return (
+        // <Context.Provider value={{open,create,setUserTitle,setTitle}}>
         <TableContainer component={Paper} sx={style.table}>
+            <SearchAppBar setSet={setSet} setOpen={setOpen} handleOpen={handleOpen} open={open} create={create} setUserTitle={setUserTitle} setTitle={setTitle}></SearchAppBar>
             {/*<IconButton onClick={handleOpen}><CreateOutlinedIcon/></IconButton>*/}
-            <TextField id="standard-basic" label="Standard" variant="standard"
-                       onChange={(e: any) => setSet(e.target.value)}/>
+            {/*<TextField id="standard-basic" label="Standard" variant="standard"*/}
+            {/*           onChange={(e: any) => setSet(e.target.value)}/>*/}
             <Table stickyHeader>
                 <TableHead>
                     <TableRow>
@@ -129,13 +140,15 @@ const UserComponent = () => {
                             return false
                         }).map((row: User) => (
                             <ModalUser key={row.id} row={row} deleteItem={deleteItem} setTitle={setTitle}
-                                       setUserTitle={setUserTitle} updateUser={updateUser}
+                                       setUserTitle={setUserTitle} updateUser={updateUser} open={open} handleOpen={handleOpen}
+                                       handleClose={handleClose} setOpen={setOpen}
                             />
                         ))
                     }
                 </TableBody>
             </Table>
         </TableContainer>
+        // </Context.Provider>
     );
 }
 const style = {
