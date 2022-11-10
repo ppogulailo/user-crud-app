@@ -7,34 +7,35 @@ import {
     TableCell,
     Paper,
 } from "@mui/material";
-import {useEffect, useRef, useState} from "react";
+import React, {FC, useEffect, useRef, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useTypeSelector} from "../hooks/useTypeSelector";
 import {addItem, fetchItem, removeTodo, updateItem} from "../redux/store/users/userReducer";
 import {User} from "../type/types";
-import ModalUser from "./ModalUser";
-import SearchAppBar from "./searchAppBar";
+import {ModalUser} from "./ModalUser";
+import {SearchAppBar} from "./searchAppBar";
 
 
-// @ts-ignore
-// export const Context =React.createContext()
-const UserComponent = () => {
+const UserComponent:FC = () => {
     const dispatch = useDispatch()
     const items = useTypeSelector((state) => state.reducer.item);
-    const [open, setOpen] = useState(false);
-    const handleOpen = (e: any) => {
+    const [title, setTitle] = useState<string>('');
+    const [userTitle, setUserTitle] = useState<string>('');
+    const [set, setSet] = useState('')
+    const [open, setOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (!items[0]) {
+            fetchData()
+        }
+    }, [])
+
+
+    const inputEl = useRef(null);
+    const handleOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation()
         setOpen(true)
     };
-    const handleClose = (e: any) => {
-        setOpen(false)
-    }
-    const inputEl = useRef(null);
-
-    const [title, setTitle] = useState('');
-    const [userTitle, setUserTitle] = useState('');
-    const [set, setSet] = useState('')
-
     const fetchData = async () => {
         const {data} = await axios.get('https://jsonplaceholder.typicode.com/users')
         await dispatch(fetchItem(data))
@@ -67,8 +68,8 @@ const UserComponent = () => {
                 if (data) {
                     data.id = items[items.length - 1].id + 1
                     dispatch(addItem(data))
-                    setTitle("")
-                    setUserTitle("")
+                    setTitle('')
+                    setUserTitle('')
                     setOpen(false)
                 }
             } catch (e) {
@@ -103,19 +104,16 @@ const UserComponent = () => {
                 });
                 if (data) {
                     dispatch(updateItem(data))
-                    setTitle("")
-                    setUserTitle("")
+                    setTitle('')
+                    setUserTitle('')
                     setOpen(false)
-                    // @ts-ignore
-                    inputEl.current.style.background='red'
-                    console.log(inputEl.current)
-                    // @ts-ignore
                 }
             } catch (e) {
                 throw e
             }
         }
     }
+
 
 
     return (
@@ -144,9 +142,7 @@ const UserComponent = () => {
                             return false
                         }).map((row: User) => (
                             <ModalUser  key={row.id} row={row} deleteItem={deleteItem} setTitle={setTitle}
-                                       setUserTitle={setUserTitle} updateUser={updateUser} open={open}
-                                       handleOpen={handleOpen}
-                                       handleClose={handleClose} setOpen={setOpen} inputEl={inputEl}
+                                       setUserTitle={setUserTitle} updateUser={updateUser}
                             />
                         ))
                     }

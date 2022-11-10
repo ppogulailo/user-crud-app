@@ -1,17 +1,14 @@
 import {Box, Button,Modal,TextField} from "@mui/material";
-import { useState} from "react";
+import React, { FC} from "react";
 import ReactDom from "react-dom";
 import {Controller, SubmitHandler, useForm, useFormState} from "react-hook-form";
 import {nameValidation, usernameValidation} from "./validation";
 import {ColorButton} from "./searchAppBar";
-
-interface ISignInForm {
-    name: string;
-    username: string;
-}
+import { ISignInForm } from "../type/types";
+import { IModal } from "../type/types";
 
 
-function ModalBlock({open,setUserTitle, setTitle, updateUser,setOpen,id,create}: any) {
+export const ModalBlock:FC<IModal>=({open,setUserTitle, setTitle, updateUser,setOpen,id,create})=> {
     const {control} = useForm<ISignInForm>({
         mode: 'onChange',
     });
@@ -20,7 +17,7 @@ function ModalBlock({open,setUserTitle, setTitle, updateUser,setOpen,id,create}:
         control
     })
 
-    const handleClose = (e:any) =>{
+    const handleClose = () =>{
         setOpen(false)
     }
 
@@ -28,9 +25,9 @@ function ModalBlock({open,setUserTitle, setTitle, updateUser,setOpen,id,create}:
 
     return ReactDom.createPortal(
         <Modal
-            onClick={event =>event.stopPropagation()}
+            onClick={(event:React.MouseEvent) =>event.stopPropagation()}
             open={open}
-            onClose={(e:any)=>handleClose(e)}
+            onClose={()=>handleClose()}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
@@ -83,9 +80,16 @@ function ModalBlock({open,setUserTitle, setTitle, updateUser,setOpen,id,create}:
                             />
                         )}
                     />
-                    {updateUser?
-                        <Button onClick={(e) =>{updateUser(id)}}>Change User</Button>:
-                        <ColorButton onClick={() =>create()}>Create User</ColorButton>
+
+                    {create?
+                        <ColorButton onClick={() =>create()}>Create User</ColorButton>:
+                        <Button onClick={() =>{
+                            if (updateUser) {
+                                if (typeof id === "number") {
+                                    updateUser(id)
+                                }
+                            }}}>Change User</Button>
+
                     }
                 </Box>
             </Box>
@@ -105,5 +109,5 @@ export const style = {
         p: 4,
     }
 }
-export default ModalBlock;
+
 
