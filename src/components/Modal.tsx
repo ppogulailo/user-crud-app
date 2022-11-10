@@ -3,6 +3,7 @@ import { useState} from "react";
 import ReactDom from "react-dom";
 import {Controller, SubmitHandler, useForm, useFormState} from "react-hook-form";
 import {nameValidation, usernameValidation} from "./validation";
+import {ColorButton} from "./searchAppBar";
 
 interface ISignInForm {
     name: string;
@@ -10,7 +11,7 @@ interface ISignInForm {
 }
 
 
-function ModalBlock({open,setUserTitle, setTitle, updateUser,setOpen,id}: any) {
+function ModalBlock({open,setUserTitle, setTitle, updateUser,setOpen,id,create}: any) {
     const {control} = useForm<ISignInForm>({
         mode: 'onChange',
     });
@@ -20,8 +21,6 @@ function ModalBlock({open,setUserTitle, setTitle, updateUser,setOpen,id}: any) {
     })
 
     const handleClose = (e:any) =>{
-
-
         setOpen(false)
     }
 
@@ -55,7 +54,6 @@ function ModalBlock({open,setUserTitle, setTitle, updateUser,setOpen,id}: any) {
                                     setTitle(e.target.value)
                                 }
                                 }
-                                value={field.value}
                                 fullWidth={true}
                                 size="small"
                                 margin="normal"
@@ -85,9 +83,10 @@ function ModalBlock({open,setUserTitle, setTitle, updateUser,setOpen,id}: any) {
                             />
                         )}
                     />
-                    <Button onClick={(e) =>{
-                        updateUser(id)}
-                    }>Change User</Button>
+                    {updateUser?
+                        <Button onClick={(e) =>{updateUser(id)}}>Change User</Button>:
+                        <ColorButton onClick={() =>create()}>Create User</ColorButton>
+                    }
                 </Box>
             </Box>
         </Modal>,portalDiv

@@ -6,7 +6,9 @@ export const nameValidation = {
         if(value.match(/[а-яА-Я]/)) {
             return 'Validation Error'
         }
-
+        if(value.trim()==='') {
+            return 'Validation Error'
+        }
         return true;
     }
 };
@@ -17,7 +19,9 @@ export const usernameValidation = {
         if(value.match(/[а-яА-Я]/)) {
             return 'Validation Error'
         }
-
+        if(value.trim()==='') {
+            return 'Validation Error'
+        }
         return true;
     }
 };

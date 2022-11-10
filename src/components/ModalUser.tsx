@@ -13,7 +13,7 @@ interface ISignInForm {
 }
 
 
-function ModalUser({row, deleteItem, setUserTitle, setTitle, updateUser}: any) {
+function ModalUser({row, deleteItem, setUserTitle, setTitle, updateUser,inputEl}: any) {
     const navigate = useNavigate();
 
     const [open, setOpen] = useState(false);
@@ -30,9 +30,10 @@ function ModalUser({row, deleteItem, setUserTitle, setTitle, updateUser}: any) {
     return (
 
         <TableRow
+            id='style'
             key={row.id}
             onClick={(e) =>{ navigate(`/user/${row.id}`)}}
-            sx={{cursor: 'pointer'}}
+            ref={inputEl}
         >
             <TableCell align='center'>{row.id}</TableCell>
             <TableCell align='center'>{row.name}</TableCell>

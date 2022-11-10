@@ -9,13 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Button, { ButtonProps } from "@mui/material/Button";
-import {purple, red} from '@mui/material/colors';
-import {Modal, TextField} from "@mui/material";
-import {Controller, useForm, useFormState} from "react-hook-form";
-import {nameValidation, usernameValidation} from "./validation";
-import { style } from './ModalUser';
-import {useState} from "react";
-import { ISignInForm } from '../type/types';
+import {red} from '@mui/material/colors';
 import ModalBlock from "./Modal";
 
 
@@ -43,7 +37,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'center',
 }));
-const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+export const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(red[600]),
     backgroundColor: red[700],
     '&:hover': {
@@ -100,7 +94,7 @@ export default function SearchAppBar({setSet,setOpen,open,create,setUserTitle,se
     User List
     </Typography>
         <ColorButton variant="contained" onClick={(e)=> handleOpen(e)}>Create User</ColorButton>
-        <ModalBlock setOpen={setOpen} open={open} setUserTitle={setUserTitle} setTitle={setTitle} updateUser={create}/>
+        <ModalBlock setOpen={setOpen} open={open} setUserTitle={setUserTitle} setTitle={setTitle} create={create}/>
     <Search>
     <SearchIconWrapper>
         <SearchIcon />
