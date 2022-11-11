@@ -2,10 +2,10 @@ import {Box, Button,Modal,TextField} from "@mui/material";
 import React, { FC} from "react";
 import ReactDom from "react-dom";
 import {Controller, SubmitHandler, useForm, useFormState} from "react-hook-form";
-import {nameValidation, usernameValidation} from "./validation";
-import {ColorButton} from "./searchAppBar";
-import { ISignInForm } from "../type/types";
-import { IModal } from "../type/types";
+import {nameValidation, usernameValidation} from "../validation/validation";
+import {ColorButton} from "../material/searchAppBar";
+import { ISignInForm } from "../../type/types";
+import { IModal } from "../../type/types";
 
 
 export const ModalBlock:FC<IModal>=({open,setUserTitle, setTitle, updateUser,setOpen,id,create})=> {

@@ -10,10 +10,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Button, {ButtonProps} from "@mui/material/Button";
 import {red} from '@mui/material/colors';
-import {ModalBlock} from "./Modal";
+import {ModalBlock} from "../modal/Modal";
 import {Dispatch, FC} from "react";
-import { ISeach } from '../type/types';
-
+import { ISeach } from '../../type/types';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import {useNavigate} from "react-router-dom";
 
 
 const Search = styled('div')(({theme}) => ({
@@ -72,19 +73,21 @@ const darkTheme = createTheme({
 });
 
 export const SearchAppBar:FC<ISeach>=({setSet, setOpen, open, create, setUserTitle, setTitle, handleOpen}) =>{
+    const navigate = useNavigate();
     return (
         <ThemeProvider theme={darkTheme}>
             <Box sx={{flexGrow: 1}}>
                 <AppBar position="static">
-                    <Toolbar>
+                    <Toolbar >
                         <IconButton
                             size="large"
                             edge="start"
                             color="inherit"
                             aria-label="open drawer"
                             sx={{mr: 2}}
+                            onClick={() => navigate(`/`)}
                         >
-                            <MenuIcon/>
+                            <ArrowBackIcon/>
 
                         </IconButton>
                         <Typography

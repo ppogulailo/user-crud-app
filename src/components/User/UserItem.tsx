@@ -3,12 +3,12 @@ import React, {Dispatch, FC, useState} from "react";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import {useNavigate} from "react-router-dom";
-import {ModalBlock} from "./Modal";
-import {IModalUser} from "../type/types";
+import {ModalBlock} from "../modal/Modal";
+import {IModalUser} from "../../type/types";
 
 
 
-export const ModalUser:FC<IModalUser>=({row, deleteItem, setUserTitle, setTitle, updateUser}) =>{
+export const UserItem:FC<IModalUser>=({row, deleteItem, setUserTitle, setTitle, updateUser}) =>{
     const navigate = useNavigate();
 
     const [open, setOpen] = useState(false);

@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from 'react-router-dom';
-import {getUser} from "../redux/store/users/users-selector";
+import {getUser} from "../../redux/store/users/users-selector";
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {useTypeSelector} from "../hooks/useTypeSelector";
+import {useTypeSelector} from "../../hooks/useTypeSelector";
 import {AppBar, ButtonGroup, Stack} from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {pink} from '@mui/material/colors';
@@ -42,8 +42,8 @@ const UserCard = () => {
                         <AppBar position="static" color="primary" enableColorOnDark>
                         </AppBar>
                         <AppBar position="static" color="primary">
-                            <Button onClick={(e) => {
-                                navigate(`/usercomponent`)
+                            <Button onClick={() => {
+                                navigate(`/main`)
                             }}>
                                 Go UserComponent
                             </Button>

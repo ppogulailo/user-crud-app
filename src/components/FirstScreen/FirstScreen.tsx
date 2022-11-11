@@ -8,8 +8,10 @@ import Grid from '@mui/material/Grid';
 
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {NavLink} from "react-router-dom";
-import userComponent from './userComponent';
+import {NavLink, useNavigate} from "react-router-dom";
+import userComponent from '../MainScreen/MainScreen';
+import {ColorButton} from "../material/searchAppBar";
+import BasicList from "../material/List";
 
 
 const theme = createTheme();
@@ -23,7 +25,7 @@ export default function SignInSide() {
             password: data.get('password'),
         });
     };
-
+    const navigate = useNavigate();
     return (
         <ThemeProvider theme={theme}>
             <Grid container component="main" sx={{ height: '100vh' }}>
@@ -57,16 +59,16 @@ export default function SignInSide() {
                             Welcome Grain Capital
                         </Typography>
                         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                            <NavLink to='/usercomponent'>
-                            <Button
+                            <BasicList></BasicList>
+                            <ColorButton
                                 type="submit"
                                 fullWidth
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
+                                onClick={() => navigate(`/main`)}
                             >
-                                Let's go to UserComponent
-                            </Button>
-                            </NavLink>
+                                Main Component
+                            </ColorButton>
                         </Box>
                     </Box>
                 </Grid>

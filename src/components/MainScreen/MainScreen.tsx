@@ -9,14 +9,14 @@ import {
 } from "@mui/material";
 import React, {FC, useEffect, useRef, useState} from "react";
 import {useDispatch} from "react-redux";
-import {useTypeSelector} from "../hooks/useTypeSelector";
-import {addItem, fetchItem, removeTodo, updateItem} from "../redux/store/users/userReducer";
-import {User} from "../type/types";
-import {ModalUser} from "./ModalUser";
-import {SearchAppBar} from "./searchAppBar";
+import {useTypeSelector} from "../../hooks/useTypeSelector";
+import {addItem, fetchItem, removeTodo, updateItem} from "../../redux/store/users/userReducer";
+import {User} from "../../type/types";
+import {UserItem} from "../User/UserItem";
+import {SearchAppBar} from "../material/searchAppBar";
 
 
-const UserComponent:FC = () => {
+const MainScreen:FC = () => {
     const dispatch = useDispatch()
     const items = useTypeSelector((state) => state.reducer.item);
     const [title, setTitle] = useState<string>('');
@@ -31,7 +31,7 @@ const UserComponent:FC = () => {
     }, [])
 
 
-    const inputEl = useRef(null);
+
     const handleOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation()
         setOpen(true)
@@ -141,8 +141,8 @@ const UserComponent:FC = () => {
                             }
                             return false
                         }).map((row: User) => (
-                            <ModalUser  key={row.id} row={row} deleteItem={deleteItem} setTitle={setTitle}
-                                       setUserTitle={setUserTitle} updateUser={updateUser}
+                            <UserItem key={row.id} row={row} deleteItem={deleteItem} setTitle={setTitle}
+                                      setUserTitle={setUserTitle} updateUser={updateUser}
                             />
                         ))
                     }
@@ -166,4 +166,4 @@ const style = {
         p: 4,
     }
 };
-export default UserComponent;
+export default MainScreen;
