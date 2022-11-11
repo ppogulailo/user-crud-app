@@ -1,5 +1,4 @@
-import {useNavigate, useParams} from 'react-router-dom';
-import {getUser} from "../../redux/store/users/users-selector";
+import { useNavigate, useParams } from 'react-router-dom';
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -8,42 +7,43 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {useTypeSelector} from "../../hooks/useTypeSelector";
-import {AppBar, ButtonGroup, Stack} from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { AppBar, ButtonGroup, Stack } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import {pink} from '@mui/material/colors';
-
+import { pink } from '@mui/material/colors';
+import { useTypeSelector } from '../../hooks/useTypeSelector';
+import { getUser } from '../../redux/store/users/users-selector';
+import { ColorButton } from '../material/searchAppBar';
 
 const UserCard = () => {
-    const navigate = useNavigate();
-    const {id} = useParams();
-    const user = useTypeSelector(getUser(Number(id)));
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const user = useTypeSelector(getUser(Number(id)));
 
-    const prevItem = () => {
-        navigate(`/user/${Number(id) - 1}`)
-    }
-    const nextItem = () => {
-        navigate(`/user/${Number(id) + 1}`)
-    }
-    const darkTheme = createTheme({
-        palette: {
-            mode: 'dark',
-            primary: {
-                main: '#1976d2',
-            },
-        },
-    });
-    if (user) {
-        return (
+  const prevItem = () => {
+    navigate(`/user/${Number(id) - 1}`);
+  };
+  const nextItem = () => {
+    navigate(`/user/${Number(id) + 1}`);
+  };
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: '#ba000d',
+      },
+    },
+  });
+  if (user != null) {
+    return (
             <>
-                <Stack spacing={2} sx={{flexGrow: 1}}>
+                <Stack spacing={2} sx={{ flexGrow: 1 }}>
                     <ThemeProvider theme={darkTheme}>
                         <AppBar position="static" color="primary" enableColorOnDark>
                         </AppBar>
                         <AppBar position="static" color="primary">
                             <Button onClick={() => {
-                                navigate(`/main`)
+                              navigate('/main');
                             }}>
                                 Go UserComponent
                             </Button>
@@ -54,15 +54,15 @@ const UserCard = () => {
                     <CssBaseline/>
                     <Box
                         sx={{
-                            marginTop: 8,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            backgroundColor: '#bdbdbd',
-                            borderRadius: 10,
-                            alignItems: 'center'
+                          marginTop: 8,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          backgroundColor: '#bdbdbd',
+                          borderRadius: 10,
+                          alignItems: 'center',
                         }}
                     >
-                        <Avatar sx={{m: 1, bgcolor: pink[500]}}>
+                        <Avatar sx={{ m: 1, bgcolor: pink[500] }}>
                             <AccountCircleIcon/>
                         </Avatar>
                         <Typography component="h1" variant="h4">
@@ -83,18 +83,18 @@ const UserCard = () => {
                         <Typography component="h1" variant="h6">
                             Website: {user.website}
                         </Typography>
-                        <Box component="form" noValidate sx={{mt: 1}}>
+                        <Box component="form" noValidate sx={{ mt: 1 }}>
 
                             <Grid container spacing={10}>
                                 <Grid item xs={6}>
-                                    <Button fullWidth variant="contained" sx={{mt: 3, mb: 2}} onClick={prevItem}>
+                                    <ColorButton fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onClick={prevItem}>
                                         Prev
-                                    </Button>
+                                    </ColorButton>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Button fullWidth variant="contained" sx={{mt: 3, mb: 2}} onClick={nextItem}>
+                                    <ColorButton fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onClick={nextItem}>
                                         Next
-                                    </Button>
+                                    </ColorButton>
                                 </Grid>
                             </Grid>
 
@@ -102,17 +102,17 @@ const UserCard = () => {
                     </Box>
                 </Container>
             </>
-        );
-    } else {
-        return (
+    );
+  }
+  return (
             <>
                 <Box
                     sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                        minHeight: '100vh',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      flexDirection: 'column',
+                      minHeight: '100vh',
                     }}
                 >
                     <Typography variant="h1">
@@ -126,18 +126,19 @@ const UserCard = () => {
                         variant="contained"
                         aria-label="Disabled elevation buttons"
                     >
-                        <Button variant="contained" sx={{mt: 3, mb: 2}} onClick={prevItem}>
+                        <ColorButton variant="contained" sx={{ mt: 3, mb: 2 }} onClick={prevItem}>
                             Prev
-                        </Button>
-                        <Button variant="contained" sx={{mt: 3, mb: 2}} onClick={nextItem}>
+                        </ColorButton>
+                        <ColorButton variant="contained" sx={{ mt: 3, mb: 2 }} onClick={nextItem}>
                             Next
-                        </Button>
+                        </ColorButton>
                     </ButtonGroup>
+                    <ColorButton variant="contained" onClick={() => navigate('/main')}>
+                       Home
+                    </ColorButton>
                 </Box>
             </>
-        )
-    }
-
-}
+  );
+};
 
 export default UserCard;
