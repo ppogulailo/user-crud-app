@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import HelloComponent from './components/FirstScreen/FirstScreen';
 import MainScreen from './components/MainScreen/MainScreen';
 import UserCard from './components/User/userCard';
-import './App.css';
 import NoMatch from './components/404/NoMatch';
 
 function App() {

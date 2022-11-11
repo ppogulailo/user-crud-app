@@ -24,7 +24,7 @@ export default function NoMatch() {
             <Typography variant="h6" style={{ color: 'white' }}>
                 The page you’re looking for doesn’t exist.
             </Typography>
-            <ColorButton variant="contained" onClick={() => navigate('/main')}>Home</ColorButton>
+            <ColorButton variant="contained" onClick={() => navigate('main')}>Home</ColorButton>
         </Box>
   );
 }
