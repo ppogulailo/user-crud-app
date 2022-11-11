@@ -18,6 +18,7 @@ import {
 import { IMyContext, User } from '../../type/types';
 import { UserItem } from '../User/UserItem';
 import { SearchAppBar } from '../material/searchAppBar';
+import { nameValidation, usernameValidation } from '../validation/validation';
 
 const style = {
   table: {
@@ -62,7 +63,7 @@ const MainScreen: FC = () => {
     }
   }, [items]);
   const create = async () => {
-    if (title.trim() !== '' && userTitle.trim() !== '') {
+    if (!nameValidation.validate(title) && !usernameValidation.validate(userTitle)) {
       try {
         const { data } = await axios.post('https://jsonplaceholder.typicode.com/users', {
           name: `${title}`,
@@ -112,7 +113,7 @@ const MainScreen: FC = () => {
     }
   };
   const updateUser = async (id: number) => {
-    if (title.trim() !== '' && userTitle.trim() !== '') {
+    if (!nameValidation.validate(title) && !usernameValidation.validate(userTitle)) {
       try {
         const { data } = await axios.patch(`https://jsonplaceholder.typicode.com/users/${id}`, {
           name: `${title}`,

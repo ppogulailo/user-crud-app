@@ -9,7 +9,7 @@ export const nameValidation = {
     if (value.trim() === '') {
       return 'Validation Error';
     }
-    return true;
+    return false;
   },
 };
 
@@ -22,6 +22,6 @@ export const usernameValidation = {
     if (value.trim() === '') {
       return 'Validation Error';
     }
-    return true;
+    return false;
   },
 };
