@@ -100,7 +100,7 @@ export const SearchAppBar = () => {
                         >
                             User List
                         </Typography>
-                        <ColorButton variant="contained" onClick={(e) => handleOpen(e)}>Create User</ColorButton>
+                        <ColorButton id='clickCreate'data-testid='button-create' variant="contained" onClick={(e) => handleOpen(e)}>Create User</ColorButton>
                         <ModalBlock setOpen={setOpen} open={open} create={create}/>
                         <Search>
                             <SearchIconWrapper>

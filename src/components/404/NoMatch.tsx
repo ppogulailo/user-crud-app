@@ -9,6 +9,7 @@ export default function NoMatch() {
   const navigate = useNavigate();
   return (
         <Box
+            data-testid="not-found-page"
             sx={{
               display: 'flex',
               justifyContent: 'center',

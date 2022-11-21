@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   Table,
   TableContainer,
@@ -19,6 +18,7 @@ import { IMyContext, User } from '../../type/types';
 import { UserItem } from '../User/UserItem';
 import { SearchAppBar } from '../material/searchAppBar';
 import { nameValidation, usernameValidation } from '../validation/validation';
+import axios from "axios";
 
 const style = {
   table: {
@@ -149,7 +149,7 @@ const MainScreen: FC = () => {
                             <TableCell align='center'>Actions</TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody>
+                    <TableBody id='usersblock'>
                         {
                             items.filter((obj: User) => {
                               if (obj.name.toLowerCase().includes(set.toLowerCase())) {
@@ -161,7 +161,7 @@ const MainScreen: FC = () => {
                               }
                               return false;
                             }).map((row: User) => (
-                                <UserItem key={row.id} row={row}/>
+                                <UserItem data-testid='user-item' key={row.id} row={row}/>
                             ))
                         }
                     </TableBody>

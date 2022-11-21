@@ -53,9 +53,9 @@ export const UserItem: FC<IModalUser> = ({ row }) => {
         }
 
             <TableCell align='center'>
-                <IconButton onClick={(e) => handleOpen(e)}><CreateOutlinedIcon/></IconButton>
+                <IconButton id='updatauser' onClick={(e) => handleOpen(e)}><CreateOutlinedIcon/></IconButton>
                 <ModalBlock open={open} setOpen={setOpen} id={row.id} updateUser={updateUser}/>
-                <IconButton onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                <IconButton id='remove' onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.stopPropagation();
                   deleteItem(row.id);
                 }}><DeleteOutlineOutlinedIcon/></IconButton>

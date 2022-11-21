@@ -44,7 +44,9 @@ export const ModalBlock: FC<IModal> = ({
 
   const portalDiv = document.getElementById('portal')!;
 
-  return ReactDom.createPortal(<Modal
+  return (
+    // ReactDom.createPortal(
+      <Modal
             onClick={(event: React.MouseEvent) => event.stopPropagation()}
             open={open}
             onClose={() => handleClose()}
@@ -65,6 +67,8 @@ export const ModalBlock: FC<IModal> = ({
                         rules={nameValidation}
                         render={({ field }) => (
                             <TextField
+                                id='nameI'
+                                data-testid='name-input'
                                 label="Name"
                                 onChange={(e) => {
                                   field.onChange(e);
@@ -87,6 +91,8 @@ export const ModalBlock: FC<IModal> = ({
                         rules={usernameValidation}
                         render={({ field }) => (
                             <TextField
+                                id='usernameI'
+                                data-testid='username-input'
                                 label="UserName"
                                 onChange={(e) => {
                                   field.onChange(e);
@@ -104,8 +110,8 @@ export const ModalBlock: FC<IModal> = ({
                     />
 
                     {(create != null)
-                      ? <ColorButton onClick={() => create()}>Create User</ColorButton>
-                      : <Button onClick={() => {
+                      ? <ColorButton  id='create' data-testid='create'  onClick={() => create()}>Create User</ColorButton>
+                      : <Button id='change' onClick={() => {
                         if (updateUser != null) {
                           if (typeof id === 'number') {
                             updateUser(id);
@@ -116,5 +122,6 @@ export const ModalBlock: FC<IModal> = ({
                     }
                 </Box>
             </Box>
-        </Modal>, portalDiv);
+        </Modal>)
+          // , portalDiv);
 };
