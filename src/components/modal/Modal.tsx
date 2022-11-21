@@ -2,7 +2,6 @@ import {
   Box, Button, Modal, TextField,
 } from '@mui/material';
 import React, { FC, useContext } from 'react';
-import ReactDom from 'react-dom';
 import {
   Controller, useForm, useFormState,
 } from 'react-hook-form';
@@ -42,10 +41,8 @@ export const ModalBlock: FC<IModal> = ({
     setOpen(false);
   };
 
-  const portalDiv = document.getElementById('portal')!;
-
   return (
-    // ReactDom.createPortal(
+  // ReactDom.createPortal(
       <Modal
             onClick={(event: React.MouseEvent) => event.stopPropagation()}
             open={open}
@@ -110,8 +107,8 @@ export const ModalBlock: FC<IModal> = ({
                     />
 
                     {(create != null)
-                      ? <ColorButton  id='create' data-testid='create'  onClick={() => create()}>Create User</ColorButton>
-                      : <Button id='change' onClick={() => {
+                      ? <ColorButton id='create' data-testid='create' onClick={() => create()}>Create User</ColorButton>
+                      : <Button id='change' data-testid='update' onClick={() => {
                         if (updateUser != null) {
                           if (typeof id === 'number') {
                             updateUser(id);
@@ -122,6 +119,6 @@ export const ModalBlock: FC<IModal> = ({
                     }
                 </Box>
             </Box>
-        </Modal>)
-          // , portalDiv);
+        </Modal>);
+  // , portalDiv);
 };

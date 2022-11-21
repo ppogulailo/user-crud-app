@@ -1,38 +1,37 @@
-import { ChainablePromiseElement } from 'webdriverio';
-
 import Page from './page';
-import {Simulate} from "react-dom/test-utils";
-import waiting = Simulate.waiting;
-
-
 
 class MainScreen extends Page {
-    get nameI(){
+    get nameI() {
         return $('#nameI')
     }
-    get clickCreate(){
+
+    get clickCreate() {
         return $('#clickCreate')
     }
-    get create(){
+
+    get create() {
         return $('#create')
     }
-    get change(){
+
+    get change() {
         return $('#change')
     }
-    get usernameI(){
+
+    get usernameI() {
         return $('#usernameI')
     }
-    get remove(){
+
+    get remove() {
         return $('#remove')
     }
-    get usersItem(){
-            return $$('#usersblock')
+
+    get usersItem() {
+        return $$('#usersblock')
 
     }
-
-
-    async loadData(username: string, name: string){
+    async loadData(username: string, name: string) {
         try {
+            const userCount = await this.usersItem.length
             await this.open()
             await this.clickCreate.click()
             await this.nameI.setValue(name)
@@ -41,35 +40,38 @@ class MainScreen extends Page {
             await browser.executeAsync((done) => {
                 setTimeout(done, 500)
             })
-        }catch (e){
+            const userCountPlus = await this.usersItem.length
+            if (userCountPlus-userCount !==1){
+                throw Error('Error')
+            }
+        } catch (e) {
             throw Error(`Error`)
         }
 
     }
-    async removeUser(){
+
+    async removeUser() {
         try {
             await this.open()
-                const userCount = await this.usersItem.length
-            if (!userCount){
+            const userCount = await this.usersItem.length
+            if (!userCount) {
                 throw Error('user = null')
             }
             await this.usersItem[0].$('#remove').click()
             await browser.executeAsync((done) => {
                 setTimeout(done, 500)
             })
-            const userContAfterDelete = await this.usersItem.length
-            // console.log(userContAfterDelete)
-
-        }catch (e){
+        } catch (e) {
             throw Error(`${e.message}`)
         }
     }
-    async updateUser(username: string, name: string){
+
+    async updateUser(username: string, name: string) {
         try {
             await this.open()
             const userCount = await this.usersItem.length
-            if (!userCount){
-                throw Error('user = null')
+            if (!userCount) {
+                throw Error('user list not found')
             }
             await this.usersItem[0].$('#updatauser').click()
             await this.nameI.setValue(name)
@@ -78,12 +80,16 @@ class MainScreen extends Page {
             await browser.executeAsync((done) => {
                 setTimeout(done, 500)
             })
-        }catch (e){
+            const userCountAfter = await this.usersItem.length
+            if (userCountAfter-userCount !==0){
+                throw Error('Error')
+            }
+        } catch (e) {
             throw Error(`${e.message}`)
         }
     }
 
-    public open () {
+    public open() {
         return super.open('/main');
     }
 }

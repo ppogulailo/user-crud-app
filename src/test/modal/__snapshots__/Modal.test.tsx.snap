@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainScreen Test Create click 1`] = `<DocumentFragment />`;
+
+exports[`MainScreen Test INPUT CREATE 1`] = `<DocumentFragment />`;
+
+exports[`MainScreen Test Update Click 1`] = `<DocumentFragment />`;

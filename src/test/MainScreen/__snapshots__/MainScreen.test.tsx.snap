@@ -1,0 +1,259 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainScreen Test INPUT CREATE 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableContainer-root css-2qg4ar-MuiPaper-root-MuiTableContainer-root"
+  >
+    <div
+      class="MuiBox-root css-i9gxme"
+    >
+      <header
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-1k0i2s9-MuiPaper-root-MuiAppBar-root"
+      >
+        <div
+          class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
+        >
+          <button
+            aria-label="open drawer"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeLarge css-1rolj69-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ArrowBackIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <div
+            class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-dudo9s-MuiTypography-root"
+          >
+            User List
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1wzkho7-MuiButtonBase-root-MuiButton-root"
+            data-testid="button-create"
+            id="clickCreate"
+            tabindex="0"
+            type="button"
+          >
+            Create User
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <div
+            class="css-1orzy9s"
+          >
+            <div
+              class="css-1iz4iln"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="SearchIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInputBase-colorPrimary css-1x9fjdj-MuiInputBase-root"
+            >
+              <input
+                aria-label="search"
+                class="MuiInputBase-input css-156xqnd-MuiInputBase-input"
+                placeholder="Search…"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <table
+      class="MuiTable-root MuiTable-stickyHeader css-xn82ks-MuiTable-root"
+    >
+      <thead
+        class="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+      >
+        <tr
+          class="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeMedium css-dwuj3p-MuiTableCell-root"
+            scope="col"
+          >
+            ID
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeMedium css-dwuj3p-MuiTableCell-root"
+            scope="col"
+          >
+            Name
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeMedium css-dwuj3p-MuiTableCell-root"
+            scope="col"
+          >
+            UserName
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeMedium css-dwuj3p-MuiTableCell-root"
+            scope="col"
+          >
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+        id="usersblock"
+      />
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`MainScreen Test MainScreen snapshots 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableContainer-root css-2qg4ar-MuiPaper-root-MuiTableContainer-root"
+  >
+    <div
+      class="MuiBox-root css-i9gxme"
+    >
+      <header
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-1k0i2s9-MuiPaper-root-MuiAppBar-root"
+      >
+        <div
+          class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
+        >
+          <button
+            aria-label="open drawer"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeLarge css-1rolj69-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ArrowBackIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <div
+            class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-dudo9s-MuiTypography-root"
+          >
+            User List
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1wzkho7-MuiButtonBase-root-MuiButton-root"
+            data-testid="button-create"
+            id="clickCreate"
+            tabindex="0"
+            type="button"
+          >
+            Create User
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <div
+            class="css-1orzy9s"
+          >
+            <div
+              class="css-1iz4iln"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="SearchIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInputBase-colorPrimary css-1x9fjdj-MuiInputBase-root"
+            >
+              <input
+                aria-label="search"
+                class="MuiInputBase-input css-156xqnd-MuiInputBase-input"
+                placeholder="Search…"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <table
+      class="MuiTable-root MuiTable-stickyHeader css-xn82ks-MuiTable-root"
+    >
+      <thead
+        class="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+      >
+        <tr
+          class="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeMedium css-dwuj3p-MuiTableCell-root"
+            scope="col"
+          >
+            ID
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeMedium css-dwuj3p-MuiTableCell-root"
+            scope="col"
+          >
+            Name
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeMedium css-dwuj3p-MuiTableCell-root"
+            scope="col"
+          >
+            UserName
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignCenter MuiTableCell-sizeMedium css-dwuj3p-MuiTableCell-root"
+            scope="col"
+          >
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+        id="usersblock"
+      />
+    </table>
+  </div>
+</DocumentFragment>
+`;

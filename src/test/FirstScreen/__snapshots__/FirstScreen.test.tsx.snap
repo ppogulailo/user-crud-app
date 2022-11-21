@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FirstScreen Test should Main render 1`] = `
+<DocumentFragment>
+  <main
+    class="MuiGrid-root MuiGrid-container css-1jrn2fe-MuiGrid-root"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4 MuiGrid-grid-md-7 css-bxq4xw-MuiGrid-root"
+    />
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation6 MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-5 css-gadse4-MuiPaper-root-MuiGrid-root"
+    >
+      <div
+        class="MuiBox-root css-1y8ugea"
+      >
+        <h1
+          class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+        >
+          Welcome Grain Capital
+        </h1>
+        <form
+          class="MuiBox-root css-164r41r"
+          novalidate=""
+        >
+          <div
+            class="MuiBox-root css-144ebsl"
+          >
+            <nav
+              aria-label="main mailbox folders"
+            >
+              <ul
+                class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
+              >
+                <div
+                  class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-mhc70k-MuiGrid-root"
+                >
+                  <div
+                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
+                  >
+                    <li
+                      class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+                    >
+                      <div
+                        class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <div
+                          class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                        >
+                          <span
+                            class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                          >
+                            React
+                          </span>
+                        </div>
+                        <span
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                        />
+                      </div>
+                    </li>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
+                  >
+                    <li
+                      class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+                    >
+                      <div
+                        class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <div
+                          class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                        >
+                          <span
+                            class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                          >
+                            TypeScript
+                          </span>
+                        </div>
+                        <span
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                        />
+                      </div>
+                    </li>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
+                  >
+                    <li
+                      class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+                    >
+                      <div
+                        class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <div
+                          class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                        >
+                          <span
+                            class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                          >
+                            Redux
+                          </span>
+                        </div>
+                        <span
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                        />
+                      </div>
+                    </li>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
+                  >
+                    <li
+                      class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+                    >
+                      <div
+                        class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                        role="button"
+                        tabindex="0"
+                      >
+                        <div
+                          class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                        >
+                          <span
+                            class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                          >
+                            MaterialUI
+                          </span>
+                        </div>
+                        <span
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                        />
+                      </div>
+                    </li>
+                  </div>
+                </div>
+              </ul>
+            </nav>
+            <hr
+              class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+            />
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth css-ykc0pa-MuiButtonBase-root-MuiButton-root"
+            tabindex="0"
+            type="submit"
+          >
+            Main Component
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</DocumentFragment>
+`;

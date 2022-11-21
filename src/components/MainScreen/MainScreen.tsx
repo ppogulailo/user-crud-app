@@ -10,6 +10,7 @@ import React, {
   FC, useEffect, useState,
 } from 'react';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 import {
   addItem, fetchItem, removeTodo, updateItem,
@@ -18,7 +19,6 @@ import { IMyContext, User } from '../../type/types';
 import { UserItem } from '../User/UserItem';
 import { SearchAppBar } from '../material/searchAppBar';
 import { nameValidation, usernameValidation } from '../validation/validation';
-import axios from "axios";
 
 const style = {
   table: {
