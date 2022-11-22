@@ -67,10 +67,10 @@ export interface IModal {
 }
 
 export interface IMyContext {
-  deleteItem: (id: number) => void
+  deleteUser: (id: number) => void
   updateUser: (id: number) => void
   setSet: Dispatch<string>
-  create: () => void
+  createUser: () => void
   setUserTitle: Dispatch<string>
   setTitle: Dispatch<string>
   title: string

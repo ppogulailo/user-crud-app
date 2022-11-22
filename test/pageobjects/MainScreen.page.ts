@@ -21,10 +21,6 @@ class MainScreen extends Page {
         return $('#usernameI')
     }
 
-    get remove() {
-        return $('#remove')
-    }
-
     get usersItem() {
         return $$('#usersblock')
 
@@ -56,7 +52,7 @@ class MainScreen extends Page {
             const userCount = await this.usersItem.length
             if (!userCount) {
                 throw Error('user = null')
-            }
+                }
             await this.usersItem[0].$('#remove').click()
             await browser.executeAsync((done) => {
                 setTimeout(done, 500)

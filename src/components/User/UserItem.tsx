@@ -11,18 +11,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ModalBlock } from '../modal/Modal';
 import { IModalUser } from '../../type/types';
 import { MyContext } from '../MainScreen/MainScreen';
-import { useTypeSelector } from '../../hooks/useTypeSelector';
 
-export const UserItem: FC<IModalUser> = ({ row }) => {
+export const    UserItem: FC<IModalUser> = ({ row }) => {
   const navigate = useNavigate();
-  const item = useTypeSelector((state) => state.reducer.item[row.id - 1]);
   const [open, setOpen] = useState(false);
   const handleOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setOpen(true);
   };
 
-  const { updateUser, deleteItem } = useContext(MyContext);
+  const { updateUser, deleteUser } = useContext(MyContext);
   const theme = createTheme({
     typography: {
       subtitle1: {
@@ -37,10 +35,10 @@ export const UserItem: FC<IModalUser> = ({ row }) => {
         <TableRow
             id='style'
             key={row.id}
-            onClick={() => { navigate(`/user/${row.id}`); }}
-
-        >{
-            item?.nameChanged
+            onClick={() => { navigate(`/user/${row.id}`) }}
+        >
+            {
+            row?.nameChanged
               ? <>
                     <TableCell align='center'><Typography variant='subtitle1'>{row.id}</Typography></TableCell>
                     <TableCell align='center'><Typography variant='subtitle1'>{row.name}</Typography></TableCell>
@@ -57,7 +55,7 @@ export const UserItem: FC<IModalUser> = ({ row }) => {
                 <ModalBlock open={open} setOpen={setOpen} id={row.id} updateUser={updateUser}/>
                 <IconButton id='remove' onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.stopPropagation();
-                  deleteItem(row.id);
+                  deleteUser(row.id);
                 }}><DeleteOutlineOutlinedIcon/></IconButton>
             </TableCell>
         </TableRow>

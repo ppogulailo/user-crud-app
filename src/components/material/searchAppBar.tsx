@@ -74,7 +74,7 @@ export const SearchAppBar = () => {
     e.stopPropagation();
     setOpen(true);
   };
-  const { setSet, create } = useContext(MyContext);
+  const { setSet, createUser } = useContext(MyContext);
   const navigate = useNavigate();
   return (
         <ThemeProvider theme={darkTheme}>
@@ -101,7 +101,7 @@ export const SearchAppBar = () => {
                             User List
                         </Typography>
                         <ColorButton id='clickCreate'data-testid='button-create' variant="contained" onClick={(e) => handleOpen(e)}>Create User</ColorButton>
-                        <ModalBlock setOpen={setOpen} open={open} create={create}/>
+                        <ModalBlock setOpen={setOpen} open={open} create={createUser}/>
                         <Search>
                             <SearchIconWrapper>
                                 <SearchIcon/>

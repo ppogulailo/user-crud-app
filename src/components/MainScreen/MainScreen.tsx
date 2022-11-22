@@ -37,10 +37,10 @@ const style = {
 };
 
 export const MyContext = React.createContext<IMyContext>({
-  deleteItem: () => {},
+  deleteUser: () => {},
   updateUser: () => {},
   setSet: () => {},
-  create: () => {},
+  createUser: () => {},
   title: '',
   userTitle: '',
   setTitle: () => {},
@@ -48,21 +48,21 @@ export const MyContext = React.createContext<IMyContext>({
 });
 const MainScreen: FC = () => {
   const dispatch = useDispatch();
-  const items = useTypeSelector((state) => state.reducer.item);
+  const users = useTypeSelector((state) => state.reducer.item);
   const [title, setTitle] = useState<string>('');
   const [userTitle, setUserTitle] = useState<string>('');
   const [set, setSet] = useState('');
-  const fetchData = async () => {
+  const fetchUser = async () => {
     const { data } = await axios.get('https://jsonplaceholder.typicode.com/users');
     const newList = data.map((item: User) => ({ ...item, nameChanged: false }));
     await dispatch(fetchItem(newList));
   };
   useEffect(() => {
-    if (!items[0]) {
-      fetchData();
+    if (!users[0]) {
+      fetchUser();
     }
-  }, [items]);
-  const create = async () => {
+  }, [users]);
+  const createUser = async () => {
     if (!nameValidation.validate(title) && !usernameValidation.validate(userTitle)) {
       try {
         const { data } = await axios.post('https://jsonplaceholder.typicode.com/users', {
@@ -88,7 +88,7 @@ const MainScreen: FC = () => {
           },
         });
         if (data) {
-          data.id = items[items.length - 1].id + 1;
+          data.id = users[users.length - 1].id + 1;
           dispatch(addItem(data));
           setTitle('');
           setUserTitle('');
@@ -98,7 +98,7 @@ const MainScreen: FC = () => {
       }
     }
   };
-  const deleteItem = async (id: number) => {
+  const deleteUser = async (id: number) => {
     try {
       const { data } = await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`, {
         headers: {
@@ -133,10 +133,24 @@ const MainScreen: FC = () => {
       }
     }
   };
+  const searchUser =()=>{
+    return users.filter((obj: User) => {
+      if (obj.name.toLowerCase().includes(set.toLowerCase())) {
+        return true;
+      } if (obj.username.toLowerCase().includes(set.toLowerCase())) {
+        return true;
+      } if (obj.id.toString() === set) {
+        return true;
+      }
+      return false;
+    }).map((row: User) => (
+        <UserItem data-testid='user-item' key={row.id} row={row}/>
+    ))
+  }
 
   return (
         <MyContext.Provider value={{
-          setSet, create, setUserTitle, setTitle, updateUser, deleteItem, title, userTitle,
+          setSet, createUser, setUserTitle, setTitle, updateUser, deleteUser, title, userTitle,
         }}>
             <TableContainer component={Paper} sx={style.table}>
                 <SearchAppBar></SearchAppBar>
@@ -151,18 +165,7 @@ const MainScreen: FC = () => {
                     </TableHead>
                     <TableBody id='usersblock'>
                         {
-                            items.filter((obj: User) => {
-                              if (obj.name.toLowerCase().includes(set.toLowerCase())) {
-                                return true;
-                              } if (obj.username.toLowerCase().includes(set.toLowerCase())) {
-                                return true;
-                              } if (obj.id.toString() === set) {
-                                return true;
-                              }
-                              return false;
-                            }).map((row: User) => (
-                                <UserItem data-testid='user-item' key={row.id} row={row}/>
-                            ))
+                          searchUser()
                         }
                     </TableBody>
                 </Table>
