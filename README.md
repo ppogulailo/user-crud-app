@@ -4,4 +4,4 @@ User App - React, Redux, MaterialUI, TypeScript, Jest, WebDriverIO
 clone project > npm install > npm start
   
   //
-https://pogungun.github.io/userApp/Cancel changes
+  https://pogungun.github.io/userApp/ 
