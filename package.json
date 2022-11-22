@@ -34,6 +34,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages - d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
@@ -90,6 +92,6 @@
   "bugs": {
     "url": "https://github.com/PogunGun/userApp/issues"
   },
-  "homepage": "https://github.com/",
+  "homepage": "https://pogungun.github.io/userApp/",
   "keywords": []
 }
